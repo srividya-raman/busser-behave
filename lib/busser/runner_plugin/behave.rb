@@ -24,6 +24,8 @@ require 'busser/runner_plugin'
 #
 class Busser::RunnerPlugin::Behave < Busser::RunnerPlugin::Base
   postinstall do
+     run!("curl 'https://bootstrap.pypa.io/get-pip.py' -o "get-pip.py"")
+     run!("python get-pip.py")
      inside(Pathname.new(__FILE__).dirname.join("../../../vendor/behave")) do
       run!("python setup.py install")
     end
