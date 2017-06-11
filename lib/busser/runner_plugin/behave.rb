@@ -24,7 +24,7 @@ require 'busser/runner_plugin'
 #
 class Busser::RunnerPlugin::Behave < Busser::RunnerPlugin::Base
   postinstall do
-     run!("curl 'https://bootstrap.pypa.io/get-pip.py' -o "get-pip.py"")
+     run!("curl -O 'https://bootstrap.pypa.io/get-pip.py'")
      run!("python get-pip.py")
      inside(Pathname.new(__FILE__).dirname.join("../../../vendor/behave")) do
       run!("python setup.py install")
@@ -32,6 +32,6 @@ class Busser::RunnerPlugin::Behave < Busser::RunnerPlugin::Base
   end
 
   def test
-    run!("behave --summary -o behavelog #{suite_path("behave")}")
+    run!("behave --summary -o behavelog.out #{suite_path("behave")}")
   end
 end

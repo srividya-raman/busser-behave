@@ -21,6 +21,6 @@ module Busser
   module Behave
 
     # Version string for the Behave Busser runner plugin
-    VERSION = "0.1.1"
+    VERSION = "0.1.3"
   end
 end
